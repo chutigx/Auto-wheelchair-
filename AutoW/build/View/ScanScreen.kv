@@ -1,0 +1,129 @@
+<HomeScreen>:
+    name:'home'
+    MDBottomNavigation:
+        #panel_color: "#eeeaea"
+        selected_color_background: "orange"
+        text_color_active: "4EB690"
+
+        canvas:
+            Color:
+                rgb:225,231,246
+
+            Ellipse:
+                angle_start:100
+                angle_end:600
+                pos:155,2
+                size:60,60
+            Color:
+                rgba: 0.3, 0.6, 0.5,1
+            Rectangle:
+                pos:184.5,23
+                size:2,20
+            Color:
+                rgba: 0.3, 0.6, 0.5,1
+            Rectangle:
+                pos:175.5,33
+                size:20,2
+
+        MDBottomNavigationItem:
+            name: 'home'
+            text: 'Trang Chủ'
+            icon: 'home'
+
+        MDBottomNavigationItem:
+            name: 'device'
+            text: 'thiết bị'
+            icon: 'view-grid-outline'
+
+        MDBottomNavigationItem:
+            name: 'addDevice'
+            icon: 'plus'
+
+            MDLabel:
+                text: "Thêm thiết bị"
+                font_style: "H6"
+                padding: "4dp", "4dp"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+            MDLabel:
+                text: "Hãy bắt đầu kết nối thiết bị đầu tiên "
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.43, "center_y": 0.9}
+
+            MDSmartTile:
+                radius: 24
+                box_radius: [0, 0, 24, 24]
+                box_color: 1, 1, 1, .2
+                source: ".\Assets\Frame0\image_1.png"
+                pos_hint: {"center_x": .5, "center_y": .75}
+                size_hint: None, None
+                size: "345dp", "136.7dp"
+
+            MDIconButton:
+                icon: "arrow-left-thin"
+                pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+            MDFillRoundFlatButton:
+                text: "Thêm thiết bị"
+                md_bg_color: "204cb7"
+                size_hint_x: 0.8
+                pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+        MDBottomNavigationItem:
+            name: 'control'
+            text: 'Điều khiển'
+            icon: 'camera-control'
+
+            MDLabel:
+                text: 'TĐiều khiển'
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'menu'
+            text: 'Menu'
+            icon: 'menu'
+
+            MDLabel:
+                text: 'LinkedIN'
+                halign: 'center'
+<ScanScreen>:
+    name: 'scanDevice'
+    MDLabel:
+        text: "Thêm thiết bị"
+        font_style: "H6"
+        padding: "4dp", "4dp"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+    MDLabel:
+        text: "Hãy bắt đầu kết nối thiết bị đầu tiên "
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.43, "center_y": 0.9}
+
+    MDSmartTile:
+        radius: 24
+        box_radius: [0, 0, 24, 24]
+        box_color: 1, 1, 1, .2
+        source: ".\Assets\Frame0\image_1.png"
+        pos_hint: {"center_x": .5, "center_y": .75}
+        size_hint: None, None
+        size: "345dp", "136.7dp"
+
+    MDIconButton:
+        icon: "arrow-left-thin"
+        pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+    MDFillRoundFlatButton:
+        text: "Thêm thiết bị"
+        md_bg_color: "204cb7"
+        size_hint_x: 0.8
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}

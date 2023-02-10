@@ -1,0 +1,57 @@
+ <ControlScreen>:
+    name:'controlScreen'
+            MDLabel:
+                text: "Điều khiển"
+                font_style: "H6"
+                padding: "4dp", "4dp"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+            Image:
+                source: ".\Assets\Frame0\image_1.png"
+                pos_hint: {"center_x": .5, "center_y": .65}
+                size_hint_y: None
+                size_hint_x: None
+                width: 400
+                height: 600
+                allow_stretch: True
+
+            Image:
+                source: ".\Assets\Frame6\image_1.png"
+                pos_hint: {"center_x": .5, "center_y": .3}
+                size_hint_y: None
+                size_hint_x: None
+                width: 200
+                height: 600
+                allow_stretch: True
+
+            MDIconButton:
+                icon: "arrow-left-thin"
+                pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+            MDIconButton:
+                icon: "arrow-up-thick"
+                pos_hint: {"center_x": 0.5, "center_y": 0.38}
+                on_press: root.MoveForward()
+                on_release: root.Stop()
+
+            MDIconButton:
+                icon: "arrow-down-thick"
+                pos_hint: {"center_x": 0.5, "center_y": 0.22}
+                on_press: root.MoveBackward()
+                on_release: root.Stop()
+
+            MDIconButton:
+                name: 'trai'
+                icon: "arrow-left-thick"
+                pos_hint: {"center_x": 0.35, "center_y": 0.3}
+                on_press: root.MoveLeft()
+                on_release: root.Stop()
+
+            MDIconButton:
+                icon: "arrow-right-thick"
+                pos_hint: {"center_x": 0.65, "center_y": 0.3}
+                on_press: root.MoveRight()
+                on_release: root.Stop()

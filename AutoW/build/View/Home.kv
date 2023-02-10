@@ -1,0 +1,342 @@
+#:import UrlRequest kivy.network.urlrequest.UrlRequest
+#:import partial functools.partial
+<HomeScreen>:
+    name:'home'
+    MDBottomNavigation:
+        id: bottom_nav
+        #panel_color: "#eeeaea"
+        selected_color_background: "orange"
+        text_color_active: "4EB690"
+
+        canvas:
+            Color:
+                rgb:225,231,246
+
+            Ellipse:
+                angle_start:100
+                angle_end:600
+                pos:155,2
+                size:60,60
+            Color:
+                rgba: 0.3, 0.6, 0.5,1
+            Rectangle:
+                pos:184.5,23
+                size:2,20
+            Color:
+                rgba: 0.3, 0.6, 0.5,1
+            Rectangle:
+                pos:175.5,33
+                size:20,2
+
+        MDBottomNavigationItem:
+            name: 'home'
+            text: 'Trang Chủ'
+            icon: 'home'
+
+        MDBottomNavigationItem:
+            name: 'device'
+            text: 'thiết bị'
+            icon: 'view-grid-outline'
+
+            MDLabel:
+                text: "Thiết bị"
+                font_style: "H6"
+                padding: "4dp", "4dp"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+            MDIconButton:
+                icon: "arrow-left-thin"
+                pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+            ThreeLineAvatarIconListItem:
+                id: xe1
+                text: "Xe lăn 1"
+                secondary_text: "Đã kết nối"
+                text_color: "4EB690"
+                secondary_text_color: "4EB690"
+                tertiary_text: root.showPin(100)
+                pos_hint: {"center_x": 0.5, "center_y": 0.80}
+                on_press: bottom_nav.switch_tab("control")
+                IconLeftWidget:
+                    icon: "wheelchair"
+                IconRightWidget:
+                    icon: "power"
+
+        MDBottomNavigationItem:
+            name: 'addDevice'
+            icon: 'plus'
+
+            MDLabel:
+                text: "Thêm thiết bị"
+                font_style: "H6"
+                padding: "4dp", "4dp"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+            MDLabel:
+                text: "Hãy bắt đầu kết nối thiết bị đầu tiên "
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.43, "center_y": 0.9}
+
+            Image:
+                radius: 24
+                box_radius: [0, 0, 24, 24]
+                box_color: 1, 1, 1, .2
+                source: ".\Assets\Frame0\image_1.png"
+                pos_hint: {"center_x": .5, "center_y": .75}
+                size_hint: None, None
+                size: "345dp", "136.7dp"
+
+            MDIconButton:
+                icon: "arrow-left-thin"
+                pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+            MDFillRoundFlatButton:
+                text: "Thêm thiết bị"
+                md_bg_color: "204cb7"
+                size_hint_x: 0.8
+                pos_hint: {"center_x": 0.5, "center_y": 0.65}
+                on_press: root.manager.current = 'scanDevice'
+
+        MDBottomNavigationItem:
+            name: 'control'
+            text: 'Điều khiển'
+            icon: 'camera-control'
+
+            MDLabel:
+                text: "Điều khiển"
+                font_style: "H6"
+                padding: "4dp", "4dp"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: "black"
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+            MDIconButton:
+                icon: "arrow-left-thin"
+                pos_hint: {"center_x": 0.1, "center_y": 0.95}
+
+            MDRectangleFlatIconButton:
+                text: "Gọi xe                                                                                   "
+                text_color: "black"
+                haglin: "left"
+                icon: "wheelchair"
+                icon_color: "black"
+                md_bg_color: "white"
+                size_hint_x: 0.8
+                size_hint_y: 0.07
+                pos_hint: {"center_x": 0.5, "center_y": 0.85}
+                on_press: root.manager.current = 'callScreen'
+
+            MDRectangleFlatIconButton:
+                text: "Điều khiển                                                                           "
+                text_color: "black"
+                haglin: "left"
+                icon: "camera-control"
+                icon_color: "black"
+                md_bg_color: "white"
+                size_hint_x: 0.8
+                size_hint_y: 0.07
+                pos_hint: {"center_x": 0.5, "center_y": 0.75}
+                on_press: root.manager.current = 'controlScreen'
+
+        MDBottomNavigationItem:
+            name: 'menu'
+            text: 'Menu'
+            icon: 'menu'
+
+            MDLabel:
+                text: 'LinkedIN'
+                halign: 'center'
+
+<ScanScreen>:
+    name: 'scanDevice'
+    MDLabel:
+        text: "Thêm thiết bị"
+        font_style: "H6"
+        padding: "4dp", "4dp"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+    MDIcon:
+        icon: "map-marker"
+        pos_hint: {"center_x": 0.2, "center_y": 0.88}
+
+    MDLabel:
+        text: "Dò tìm thiết bị "
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.4, "center_y": 0.88}
+
+    MDSmartTile:
+        radius: 24
+        box_radius: [0, 0, 24, 24]
+        box_color: 1, 1, 1, .2
+        source: ".\Assets\Frame7\image_1.png"
+        pos_hint: {"center_x": .5, "center_y": .75}
+        size_hint: None, None
+        size: "294dp", "151dp"
+
+    MDIconButton:
+        icon: "arrow-left-thin"
+        pos_hint: {"center_x": 0.1, "center_y": 0.95}
+        on_press: root.manager.current = 'home'
+
+    MDFillRoundFlatButton:
+        text: "Thêm thiết bị"
+        md_bg_color: "204cb7"
+        size_hint_x: 0.8
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+<ControlScreen>:
+    name:'controlScreen'
+    MDLabel:
+        text: "Điều khiển"
+        font_style: "H6"
+        padding: "4dp", "4dp"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.5, "center_y": 0.95}
+    Image:
+        source: ".\Assets\Frame0\image_1.png"
+        pos_hint: {"center_x": .5, "center_y": .65}
+        size_hint_y: None
+        size_hint_x: None
+        width: 400
+        height: 600
+        allow_stretch: True
+
+    Image:
+        source: ".\Assets\Frame6\image_1.png"
+        pos_hint: {"center_x": .5, "center_y": .3}
+        size_hint_y: None
+        size_hint_x: None
+        width: 200
+        height: 600
+        allow_stretch: True
+
+    MDIconButton:
+        icon: "arrow-left-thin"
+        pos_hint: {"center_x": 0.1, "center_y": 0.95}
+        on_press: root.manager.current = 'home'
+
+    MDIconButton:
+        icon: "arrow-up-thick"
+        pos_hint: {"center_x": 0.5, "center_y": 0.38}
+        on_press: root.MoveForward()
+        on_release: root.Stop()
+
+    MDIconButton:
+        icon: "arrow-down-thick"
+        pos_hint: {"center_x": 0.5, "center_y": 0.22}
+        on_press: root.MoveBackward()
+        on_release: root.Stop()
+
+    MDIconButton:
+        icon: "arrow-left-thick"
+        pos_hint: {"center_x": 0.35, "center_y": 0.3}
+        on_press: root.MoveLeft()
+        on_release: root.Stop()
+
+    MDIconButton:
+        icon: "arrow-right-thick"
+        pos_hint: {"center_x": 0.65, "center_y": 0.3}
+        on_press: root.MoveRight()
+        on_release: root.Stop()
+
+<ScanScreen>:
+    name: 'scanDevice'
+    MDLabel:
+        text: "Thêm thiết bị"
+        font_style: "H6"
+        padding: "4dp", "4dp"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+    MDIcon:
+        icon: "map-marker"
+        pos_hint: {"center_x": 0.2, "center_y": 0.88}
+
+    MDLabel:
+        text: "Dò tìm thiết bị "
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.4, "center_y": 0.88}
+
+    MDSmartTile:
+        radius: 24
+        box_radius: [0, 0, 24, 24]
+        box_color: 1, 1, 1, .2
+        source: ".\Assets\Frame7\image_1.png"
+        pos_hint: {"center_x": .5, "center_y": .75}
+        size_hint: None, None
+        size: "294dp", "151dp"
+
+    MDIconButton:
+        icon: "arrow-left-thin"
+        pos_hint: {"center_x": 0.1, "center_y": 0.95}
+        on_press: root.manager.current = 'home'
+
+    MDFillRoundFlatButton:
+        text: "Thêm thiết bị"
+        md_bg_color: "204cb7"
+        size_hint_x: 0.8
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+
+<CallScreen>:
+    name:'callScreen'
+    MDLabel:
+        text: "Gọi xe"
+        font_style: "H6"
+        padding: "4dp", "4dp"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.5, "center_y": 0.95}
+
+    MDIcon:
+        icon: "map-marker"
+        pos_hint: {"center_x": 0.1, "center_y": 0.88}
+
+    MDLabel:
+        text: "Bản đồ"
+        halign: "center"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": 0.2, "center_y": 0.88}
+
+    MDSmartTile:
+        radius: 24
+        box_radius: [0, 0, 24, 24]
+        box_color: 1, 1, 1, .2
+        source: ".\Assets\Frame0\map.png"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        size_hint: None, None
+        size: "294dp", "547dp"
+
+
+    MDIconButton:
+        icon: "arrow-left-thin"
+        pos_hint: {"center_x": 0.1, "center_y": 0.95}
+        on_press: root.manager.current = 'home'
+
+    MDFloatingActionButtonSpeedDial:
+        data: app.data
+        root_button_anim: True
+        anchor: 'right'
+        bg_color_root_button: "4EB690"
+        bg_color_stack_button: "4EB690"
